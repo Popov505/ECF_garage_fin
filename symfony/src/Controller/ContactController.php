@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use App\Entity\Contacts;
 use App\Form\ContactType;
 use App\Repository\ContactsRepository;
@@ -39,6 +40,10 @@ class ContactController extends AbstractController
         // List of the existing contact form
         $formList = $contactsRepository->findBy([],['id' => 'ASC']);
 
+        /*
+        // Fetch the car id for the contact form
+        $carId = $request->query->get('id');
+        */
         
         // Informations for the contact form
         $contact = new Contacts();
@@ -60,6 +65,7 @@ class ContactController extends AbstractController
             'prestationList' => $prestationList,
             'user' => $user,
             'formList' => $formList,
+            //'carId' => $carId,
         ]);
     }
 
@@ -73,4 +79,18 @@ class ContactController extends AbstractController
         $this->addFlash('success', 'Le formulaire de contact a bien été supprimé');
         return $this->redirectToRoute('app_contact');
     }
+
+/*
+    // Contact form for a given car
+
+    #[Route('/contact/delete/{id}', name: 'app_contact_delete', methods: ['DELETE'])]
+    public function delete(Contacts $contacts, EntityManagerInterface $em) {
+        $em->remove($contacts);
+        $em->flush();
+
+        $this->addFlash('success', 'Le formulaire de contact a bien été supprimé');
+        return $this->redirectToRoute('app_contact');
+    }
+*/
+
 }
