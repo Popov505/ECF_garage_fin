@@ -8,7 +8,7 @@
       <section class="prestation_article_text">
           <h2>{{ prestation.title }}</h2>
           <p>{{ prestation.message }}</p>
-          <a class="link" href="{{ path('app_contact') }}">Nous contacter</a>
+          <a class="link" href="{{ path('app_contact', {'id': car.id}) }}">Nous contacter</a>
       </section>
       <section class="prestation_article_image">
           <img src="{{ vich_uploader_asset(prestation, 'imageFile') }}" alt="Illustration for the section : {{ prestation.title }}">

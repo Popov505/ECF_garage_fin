@@ -18,9 +18,11 @@ class HomeController extends AbstractController
         Security $security, 
         PrestationsRepository $prestationsRepository,
         OpeningHoursRepository $openingHoursRepository,
+        CarsRepository $carsRepository,
     ): Response
 
     {
+        $car = $carsRepository->findOneBy(['id' => '1']);
         $openingHourList = $openingHoursRepository->findBy([],['id' => 'ASC']);
         $prestationList = $prestationsRepository->findBy([],['id' => 'ASC']);
        
@@ -31,6 +33,7 @@ class HomeController extends AbstractController
             'openingHourList' => $openingHourList,
             'prestationList' => $prestationList,
             'user' => $user,
+            'car' => $car,
         ]);
     }
 }

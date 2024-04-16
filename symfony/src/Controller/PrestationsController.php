@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class PrestationsController extends AbstractController
 {
@@ -30,12 +31,15 @@ class PrestationsController extends AbstractController
 
         $user = $security->getUser();
 
+        $car = $carsRepository->findOneBy(['id' => '1']);
+
         return $this->render('prestations/show_prestations.html.twig', [
             'cars' => $cars,
             'prestation' => $prestation,
             'prestationList' => $prestationList,
             'openingHourList' => $openingHourList,
             'user' => $user,
+            'car' => $car,
         ]);
     }
 
@@ -45,7 +49,8 @@ class PrestationsController extends AbstractController
         OpeningHoursRepository $openingHoursRepository, 
         PrestationsRepository $prestationsRepository, 
         //Prestations $prestation, 
-        Cars $car
+        Cars $car,
+        UrlGeneratorInterface $urlGeneratorInterface,
     ): Response
 
     {
@@ -56,12 +61,18 @@ class PrestationsController extends AbstractController
 
         $prestation = $prestationsRepository->findOneBy(['id' => '4']);
 
+        /* Car information fetch */
+        $contactFormUrl = $urlGeneratorInterface->generate('app_contact', [
+            'car_name' => $car->getTitle(),
+        ]);
+
         return $this->render('prestations/show_car.html.twig', [
             'car' => $car,
             'prestation' => $prestation,
             'prestationList' => $prestationList,
             'openingHourList' => $openingHourList,
             'user' => $user,
+            'contactFormUrl' => $contactFormUrl,
         ]);
     }
 }
