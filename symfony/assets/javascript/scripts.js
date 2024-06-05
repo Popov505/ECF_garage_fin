@@ -74,13 +74,12 @@ if (currentPage == '/prestations/4') {
         // Creation of the card for each car
         innerHtml += `
           <article class="sale_article_car">
-
+          
             ${ car.imageName ?`<img src="/images/vente/cars/${ car.imageName }" alt="Photo of the car for sale : {{ car.title }}">`
           :`<img src="${ 'images/logo/logoGarage.svg' }" alt="Photo of the car for sale : {{ car.title }}">`}
             
             <div>
               <h3 class="sale_car_title">${ car.title }</h3>
-
               <ul>
                 <li>Année : <em  class="year">${ car.build_year }</em></li>
                 <li>Carburant : <em class="fuel">${ car.fuel }</em></li>

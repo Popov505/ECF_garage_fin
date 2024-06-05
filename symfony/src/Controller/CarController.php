@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\CarsRepository;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CarController extends AbstractController{
 
@@ -16,8 +15,7 @@ class CarController extends AbstractController{
       Request $request, 
       CarsRepository $carsRepository): Response
     {
-
-        // Get the criterias in the URL asked in rear
+        // Get the criterias in the URL asked in background
         $kmMin = $request->query->get('kmMin');
         $kmMax = $request->query->get('kmMax');
         $yearMin = $request->query->get('yearMin');
@@ -39,7 +37,6 @@ class CarController extends AbstractController{
                 'kilometer' => $car->getKilometer(),
                 'price' => $car->getPrice(),
                 'imageName' => $car->getImageName(),
-                'imageSize' => $car->getImageSize(),
             ];
         }
 
