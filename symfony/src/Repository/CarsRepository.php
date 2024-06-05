@@ -20,4 +20,47 @@ class CarsRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Cars::class);
     }
+
+    public function findByCriteria($kmMin, $kmMax, $yearMin, $yearMax, $priceMin, $priceMax){
+
+        //Request building
+        return $this->createQueryBuilder('c')
+            
+
+            //Filter by kilometer
+            ->andWhere('c.kilometer >= :kmMin')
+            ->setParameter('kmMin', $kmMin)
+            ->andWhere('c.kilometer <= :kmMax')
+            ->setParameter('kmMax', $kmMax)
+            //Filter by year
+            ->andWhere('c.build_year >= :yearMin')
+            ->setParameter('yearMin', $yearMin)
+            ->andWhere('c.build_year <= :yearMax')
+            ->setParameter('yearMax', $yearMax)
+            //Filter by price
+            ->andWhere('c.price >= :priceMin')
+            ->setParameter('priceMin', $priceMin)
+            ->andWhere('c.price <= :priceMax')
+            ->setParameter('priceMax', $priceMax)
+            
+            /*
+            ->setParameters(new arrayCollection([
+                new Parameter('kmMin', $kmMin),
+                new Parameter('kmMax', $kmMax),
+                new Parameter('yearMin', $yearMin),
+                new Parameter('yearMax', $yearMax),
+                new Parameter('priceMin', $priceMin),
+                new Parameter('priceMax', $priceMax)                
+            ]))
+            */
+
+            /*
+            ->andWhere('c.kilometer >= 1000000')
+            */
+
+            //Result
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

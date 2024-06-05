@@ -9,6 +9,8 @@ use App\Repository\OpeningHoursRepository;
 use App\Repository\PrestationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -20,7 +22,8 @@ class PrestationsController extends AbstractController
         OpeningHoursRepository $openingHoursRepository, 
         PrestationsRepository $prestationsRepository, 
         Prestations $prestation, 
-        CarsRepository $carsRepository
+        CarsRepository $carsRepository,
+        Request $request,
     ): Response
 
     {
@@ -44,7 +47,6 @@ class PrestationsController extends AbstractController
         Security $security, 
         OpeningHoursRepository $openingHoursRepository, 
         PrestationsRepository $prestationsRepository, 
-        //Prestations $prestation, 
         Cars $car
     ): Response
 
