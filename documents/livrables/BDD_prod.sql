@@ -68,10 +68,10 @@ CREATE TABLE IF NOT EXISTS cars (
 
 /* Fulfill the table users */
 INSERT INTO users (id, email, `password`, `roles`) VALUES
-  (uuid(), 'vincent.parrot@poudlard.com', "$2y$13$lE1UXGmc0CipEyas4ke.2uIBvg6sZL.Z/lZ9qDsM1mKzUk5PLkDme", '["ROLE_ADMIN"]'),
-  (uuid(), 'ronald.weasley@poudlard.com', "$2y$13$dYy0jlxeiNa2bn6L.DAs0.5hZz7SU4X00r6tTH9GRntt.twymNsbO", '["ROLE_EMPLOYE"]'),
-  (uuid(), 'luna.lovegood@poudlard.com', "$2y$13$bsf5e2XtLzyEthbB0x4SnuXGhSP3A8IRHYIIzM9MyfUmJk5kf9.Ay", '["ROLE_EMPLOYE"]'),
-  (uuid(), 'hermione.granger@poudlard.com', "$2y$13$wzyknkKYX8QJ6ZV3AmHbM.Dxky89yrTnzOi3soNZs/gwAAWgM482y", '["ROLE_EMPLOYE"]');
+  (uuid(), 'vincent.parrot@poudlard.com', "", '["ROLE_ADMIN"]'),
+  (uuid(), 'ronald.weasley@poudlard.com', "", '["ROLE_EMPLOYE"]'),
+  (uuid(), 'luna.lovegood@poudlard.com', "", '["ROLE_EMPLOYE"]'),
+  (uuid(), 'hermione.granger@poudlard.com', "", '["ROLE_EMPLOYE"]');
 
 
 /* Fulfill the table services */
